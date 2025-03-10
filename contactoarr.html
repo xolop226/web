@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>FARMACIA SALUD VIDA</title>
+</head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos - Farmacias Galeno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #555;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Farmacias SaludVida</h1>
+</header>
+
+<nav>
+    <a href="index.html" target="mainframe">Inicio</a>
+    <a href="productos.html" target="mainframe">Productos</a>
+    <a href="ofertas.html" target="mainframe">Ofertas</a>
+    <a href="seguros.html" target="mainframe">Seguros</a>
+    <a href="prosalud.html" target="mainframe">Programas de Salud</a>
+    <a href="contacto.html" target="mainframe">Contáctanos</a>
+</nav>
+
+<div class="content">
+    <h2>Contáctanos</h2>
+    <p>Si tienes preguntas o necesitas más información, completa el siguiente formulario:</p>
+    
+    <form action="procesar.php" method="post">
+        <label for="nombre">Nombre y Apellido:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required><br>
+
+        <label for="departamento">Departamento:</label>
+        <select id="departamento" name="departamento" required onchange="updateMunicipios()">
+            <option value="">Seleccione un Departamento</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Alta Verapaz">Alta Verapaz</option>
+            <option value="Baja Verapaz">Baja Verapaz</option>
+            <option value="Chimaltenango">Chimaltenango</option>
+            <option value="Chiquimula">Chiquimula</option>
+            <option value="Escuintla">Escuintla</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Huehuetenango">Huehuetenango</option>
+            <option value="Izabal">Izabal</option>
+            <option value="Jalapa">Jalapa</option>
+            <option value="Jutiapa">Jutiapa</option>
+            <option value="Petén">Petén</option>
+            <option value="Quetzaltenango">Quetzaltenango</option>
+            <option value="Quiché">Quiché</option>
+            <option value="Retalhuleu">Retalhuleu</option>
+            <option value="Sacatepéquez">Sacatepéquez</option>
+            <option value="San Marcos">San Marcos</option>
+            <option value="Santa Rosa">Santa Rosa</option>
+            <option value="Solalá">Solalá</option>
+            <option value="Suchitepéquez">Suchitepéquez</option>
+            <option value="Totonicapán">Totonicapán</option>
+            <option value="Zacapa">Zacapa</option>
+        </select><br>
+
+        <label for="municipio">Municipio:</label>
+        <select id="municipio" name="municipio" required>
+            <option value="">Seleccione un Municipio</option>
+        </select><br>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="asunto">Asunto:</label>
+        <input type="text" id="asunto" name="asunto" required><br>
+
+        <button type="submit" class="button">Enviar</button>
+    </form>
+</div>
+
+<footer>
+  <p>&nbsp;</p>
+</footer>
+<script>
+    const municipios = {
+        "Guatemala": ["Guatemala", "Mixco", "Villa Nueva", "San Miguel Petapa", "Santa Catarina Pinula", "San Juan Sacatepéquez", "San Pedro Sacatepéquez", "San Raymundo", "Palencia", "Chinautla", "Chuarrancho", "Santa Lucia Milpas Altas", "Villa Canales"],
+        "Alta Verapaz": ["Cobán", "San Pedro Carchá", "Tactic", "San Juan Chamelco", "Santa Cruz Verapaz", "San Marcos", "San Luis", "Panzós", "Fray Bartolomé de las Casas", "San Cristóbal Verapaz", "Chisec", "Raxruhá", "Chahal", "Santa María Cahabón"],
+        "Baja Verapaz": ["Salamá", "San Miguel Chicaj", "Rabinal", "Cubulco", "Granados", "San Jerónimo", "San Pablo", "San Agustín Acasaguastlán"],
+        "Chimaltenango": ["Chimaltenango", "San Martín Jilotepeque", "Santa Apolonia", "El Tejar", "Panajachel", "San José Poaquil", "San Andrés Itzapa", "Acatenango", "San Pedro Yepocapa"],
+        "Chiquimula": ["Chiquimula", "San José La Arada", "Quezaltepeque", "Concepción Las Minas", "Camotán", "Jocotán", "El Estor", "San Juan Ermita"],
+        "Escuintla": ["Escuintla", "Santa Lucía Cotzumalguapa", "La Democracia", "San José", "Palín", "San Vicente Pacaya", "Siquinala", "Santa María de Jesús"],
+        "Huehuetenango": ["Huehuetenango", "Chiantla", "Cuilco", "La Libertad", "San Pedro Necta", "San Juan Ixcoy", "Solalá", "San Mateo Ixtatán", "San Sebastián Huehuetenango", "San Antonio Huista"],
+        "Izabal": ["Puerto Barrios", "El Estor", "Morales", "Los Amates", "San Felipe", "Gualán", "Cabo Tres Puntas"],
+        "Jalapa": ["Jalapa", "San Pedro Pinula", "Mataquescuintla", "San Luis", "Tehularte", "San Manuel Chaparrón", "San Carlos Alzatate"],
+        "Jutiapa": ["Jutiapa", "El Adelanto", "Agua Blanca", "Santa Catarina Mita", "San José Acatempa", "Moyuta", "San Luis Jilotepeque"],
+        "Petén": ["Flores", "San Benito", "Santa Elena", "La Libertad", "San Andrés", "Poptún", "Sayaxché", "San Francisco", "La Libertad"],
+        "Quetzaltenango": ["Quetzaltenango", "Olintepeque", "San Mateo", "Salcajá", "Cantel", "Sibilia", "Colomba", "Zunil"],
+        "Quiché": ["Santa Cruz del Quiché", "Chichicastenango", "Zaragoza", "Patzité", "San Antonio Ilotenango", "Chiché", "San Pedro Jocopilas", "San Juan Cotzal"],
+        "Retalhuleu": ["Retalhuleu", "San Sebastián", "Santa Cruz Muluá", "San Martín Zapotitlán", "Chiquirichapa", "El Asintal", "San Andrés Villa Seca"],
+        "Sacatepéquez": ["Antigua Guatemala", "San Lucas Sacatepéquez", "San Bartolomé Milpas Altas", "Pastores", "Sumpango", "Magdalena Milpas Altas", "San Miguel Dueñas"],
+        "San Marcos": ["San Marcos", "Tejutla", "El Tumbador", "Concepción Tutuapa", "San Pedro Sacatepéquez", "Tierra Blanca", "San José El Rodeo"],
+        "Santa Rosa": ["Cuilapa", "Barberena", "San Juan Tecuaco", "Casillas", "Chiquimulilla", "Oratorio", "San Rafael Las Flores"],
+        "Solalá": ["Solalá", "San José Chacaya", "San Juan La Laguna", "San Pablo La Laguna", "Santa Clara La Laguna", "San Antonio Palopó"],
+        "Suchitepéquez": ["Mazatenango", "Cuyotenango", "San Francisco Zapotitlán", "Zunilito", "San Bernardino", "San José El Ídolo", "Samayac"],
+        "Totonicapán": ["Totonicapán", "San Cristóbal Totonicapán", "San Francisco El Alto", "Santa María Chiquimula", "San Andrés Xecul", "San Bartolo"],
+        "Zacapa": ["Zacapa", "La Unión", "Estanzuela", "Gualán", "Teculután", "Cabañas", "San Jorge"],
+    };
+
+    function updateMunicipios() {
+        const departamento = document.getElementById("departamento").value;
+        const municipioSelect = document.getElementById("municipio");
+        municipioSelect.innerHTML = '<option value="">Seleccione un Municipio</option>'; // Reset options
+
+        if (departamento in municipios) {
+            municipios[departamento].forEach(municipio => {
+                const option = document.createElement("option");
+                option.value = municipio;
+                option.textContent = municipio;
+                municipioSelect.appendChild(option);
+            });
+        }
+    }
+      </script>
+</body>
+</html>
+<body>
+</body>
+</html>
